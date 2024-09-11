@@ -1,4 +1,4 @@
-# NekoMimi Love Checker
+# NekoMimi
 
 A playful Flutter app that helps you ask your significant other the ultimate question: *"Do you love me?"* 
 
