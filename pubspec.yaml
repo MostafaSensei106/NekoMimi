@@ -17,10 +17,19 @@ dependencies:
   provider: ^6.1.2
 
   url_launcher: ^6.3.0
+
   font_awesome_flutter: ^10.7.0
+
   flutter_bloc: ^8.1.6
+
   flutter_screenutil: ^5.9.3
+
   flutter_localization: ^0.2.2
+
+  network_info_plus: ^6.0.1
+
+  http: ^1.2.2
+
   flutter_localizations:
     sdk: flutter
   intl: any

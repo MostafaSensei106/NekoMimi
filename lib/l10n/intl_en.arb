@@ -1,1 +1,17 @@
-{}
+{
+  "title": "Neko Mimi",
+  "DarkModeListTitle": "DarkMode",
+  "DarkModeListSubTitle": "Change Appearance",
+  "DevListTitle": "Dev",
+  "DevListSubTitle": "Support,Contact Dev",
+  "DevDM" : "Dev DM",
+  "SupportMeMassage": "I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects.",
+  "DevThx": "Thank you very much. <3",
+  "SupportMeBtn": "Support Developer",
+  "ContactDev": "Contact Me @Mostafa_Sensei106",
+  "AboutAppListTitle": "About App",
+  "AboutAppListSubTitle": "Learn More About App",
+  "AboutApp": "Neko Mimi is A trolling application I made when I was sitting empty and couldnt find anything to do so enjoy",
+  "License": "License",
+  "Close": "Close"
+}

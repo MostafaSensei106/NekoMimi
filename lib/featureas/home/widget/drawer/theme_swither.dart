@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nekomimi/config/theme/theme_model.dart';
+import 'package:nekomimi/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 
@@ -31,11 +32,11 @@ class ThemeSwitcherTile extends StatelessWidget {
                   size: 27,
                 ),
               ),
-              title: const Text(
-                'Dark Mode',
+              title:  Text(
+                S.of(context).DarkModeListTitle,
               ),
-              subtitle: const Text(
-                "Change Appearance",
+              subtitle:  Text(
+                S.of(context).DarkModeListSubTitle,
               ),
               trailing: Switch(
                 value: themeModel.isDark,

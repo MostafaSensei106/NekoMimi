@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nekomimi/generated/l10n.dart';
 
 class AboutNeko extends StatelessWidget {
   const AboutNeko({super.key});
 
-  static const String AppName = 'Neko Mimi';
-  static const String aboutTadamon = 'About App';
 
   void buildAboutTadamonDialog(BuildContext context) {
     showDialog(
@@ -16,7 +15,7 @@ class AboutNeko extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(13.0),
                 clipBehavior: Clip.antiAlias,
-                child:  FlutterLogo(),
+                child: const FlutterLogo(),
 
                 // Image.asset(
                 //   'lib/assets/images/Tadamon_Logo.png',
@@ -25,10 +24,10 @@ class AboutNeko extends StatelessWidget {
                 // ),
               ),
               const SizedBox(width: 10),
-              const Column(
+              Column(
                 children: [
                   Text(
-                    AppName,
+                    S.of(context).title,
                   ),
                 ],
               ),
@@ -40,8 +39,8 @@ class AboutNeko extends StatelessWidget {
               borderRadius: BorderRadius.circular(14.0),
               color: Theme.of(context).colorScheme.surfaceContainer,
             ),
-            child: const Text(
-              'Neko Mimi is A trolling application I made when I was sitting empty and couldnt find anything to do so enjoy',
+            child:  Text(
+              S.of(context).AboutApp,
               textAlign: TextAlign.justify,
             ),
           ),
@@ -50,16 +49,14 @@ class AboutNeko extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text(
-                'Close',
-              ),
+              child: Text(S.of(context).Close),
             ),
             TextButton(
               onPressed: () {
                 showLicensePage(context: context);
               },
-              child: const Text(
-                'License',
+              child:  Text(
+                S.of(context).License,
               ),
             ),
           ],
@@ -82,11 +79,11 @@ class AboutNeko extends StatelessWidget {
           size: 27,
         ),
       ),
-      title: const Text(
-        aboutTadamon,
+      title:  Text(
+        S.of(context).AboutAppListTitle
       ),
-      subtitle: const Text(
-        'More Details About App',
+      subtitle:  Text(
+        S.of(context).AboutAppListSubTitle
       ),
       onTap: () {
         buildAboutTadamonDialog(context);

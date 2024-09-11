@@ -49,6 +49,156 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Neko Mimi`
+  String get title {
+    return Intl.message(
+      'Neko Mimi',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DarkMode`
+  String get DarkModeListTitle {
+    return Intl.message(
+      'DarkMode',
+      name: 'DarkModeListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Appearance`
+  String get DarkModeListSubTitle {
+    return Intl.message(
+      'Change Appearance',
+      name: 'DarkModeListSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dev`
+  String get DevListTitle {
+    return Intl.message(
+      'Dev',
+      name: 'DevListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support,Contact Dev`
+  String get DevListSubTitle {
+    return Intl.message(
+      'Support,Contact Dev',
+      name: 'DevListSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dev DM`
+  String get DevDM {
+    return Intl.message(
+      'Dev DM',
+      name: 'DevDM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects.`
+  String get SupportMeMassage {
+    return Intl.message(
+      'I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects.',
+      name: 'SupportMeMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you very much. <3`
+  String get DevThx {
+    return Intl.message(
+      'Thank you very much. <3',
+      name: 'DevThx',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support Developer`
+  String get SupportMeBtn {
+    return Intl.message(
+      'Support Developer',
+      name: 'SupportMeBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Me @Mostafa_Sensei106`
+  String get ContactDev {
+    return Intl.message(
+      'Contact Me @Mostafa_Sensei106',
+      name: 'ContactDev',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About App`
+  String get AboutAppListTitle {
+    return Intl.message(
+      'About App',
+      name: 'AboutAppListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn More About App`
+  String get AboutAppListSubTitle {
+    return Intl.message(
+      'Learn More About App',
+      name: 'AboutAppListSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Neko Mimi is A trolling application I made when I was sitting empty and couldnt find anything to do so enjoy`
+  String get AboutApp {
+    return Intl.message(
+      'Neko Mimi is A trolling application I made when I was sitting empty and couldnt find anything to do so enjoy',
+      name: 'AboutApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License`
+  String get License {
+    return Intl.message(
+      'License',
+      name: 'License',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get Close {
+    return Intl.message(
+      'Close',
+      name: 'Close',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -57,6 +207,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 

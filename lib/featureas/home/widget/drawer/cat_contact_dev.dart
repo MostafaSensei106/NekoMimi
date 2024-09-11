@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nekomimi/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TaContactDev extends StatelessWidget {
@@ -15,20 +16,17 @@ class TaContactDev extends StatelessWidget {
           isScrollControlled: true,
           context: context,
           builder: (BuildContext context) {
-            return Directionality(
-              textDirection: TextDirection.rtl,
-              child: FractionallySizedBox(
-                child: ClipRRect(
-                  borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(14)),
-                  child: Container(
-                    color: Theme.of(context).colorScheme.surface,
-                    child: Wrap(
-                      children: [
-                        _buildHeader(context),
-                        _buildContent(context),
-                      ],
-                    ),
+            return FractionallySizedBox(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(14)),
+                child: Container(
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Wrap(
+                    children: [
+                      _buildHeader(context),
+                      _buildContent(context),
+                    ],
                   ),
                 ),
               ),
@@ -38,9 +36,11 @@ class TaContactDev extends StatelessWidget {
       },
       child: ListTile(
         leading: _buildLeadingIcon(context),
-        title:  const Text('Dev',
+        title: Text(
+          S.of(context).DevListTitle,
         ),
-        subtitle:  const Text('دعم, تواصل مع المطور',
+        subtitle: Text(
+          S.of(context).DevListSubTitle,
         ),
         trailing: _buildTrailingImage(),
       ),
@@ -83,7 +83,8 @@ class TaContactDev extends StatelessWidget {
               borderRadius: BorderRadius.circular(4.0),
             ),
           ),
-          const Text('رسالة من المطور',
+          Text(
+            S.of(context).DevDM,
           ),
           const SizedBox(height: 6),
         ],
@@ -106,10 +107,9 @@ class TaContactDev extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 8.0),
-                _buildMessageContainer(context,
-                    "سأبقى دائماً ملتزماً بجعل تطبيق تضامن مجانياً للجميع. إذا أعجبك المشروع وترغب في دعمه، أرحب بمساهمتك. دعمك سيمكنني من الاستمرار في تقديم المساعدة لمن يحتاجها."),
+                _buildMessageContainer(context, S.of(context).SupportMeMassage),
                 const SizedBox(height: 4.0),
-                _buildProfileRow(context, 'شكراً لك.<3'),
+                _buildProfileRow(context, S.of(context).DevThx),
                 const SizedBox(height: 4.0),
                 _buildSupportButton(context),
                 const SizedBox(height: 4.0),
@@ -120,7 +120,7 @@ class TaContactDev extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: TextButton(
-              child: const Text('إغلاق'),
+              child: Text(S.of(context).Close),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
@@ -184,7 +184,7 @@ class TaContactDev extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Text(
-                  'دعم المطور',
+                  S.of(context).SupportMeBtn,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'Tajawal',
@@ -224,7 +224,7 @@ class TaContactDev extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  ' تواصل معي علي  @Mostafa_Sensei106',
+                  S.of(context).ContactDev,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontFamily: 'Tajawal',

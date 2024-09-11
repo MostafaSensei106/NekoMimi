@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a ar locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,32 +18,32 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "AboutApp": MessageLookupByLibrary.simpleMessage(
-            "Neko Mimi is A trolling application I made when I was sitting empty and couldnt find anything to do so enjoy"),
+            "Neko Mimi هو تطبيق مزاح صنعته عندما كنت جالسًا بلا شيء أفعله ولم أجد أي شيء آخر، لذا استمتعوا به."),
         "AboutAppListSubTitle":
-            MessageLookupByLibrary.simpleMessage("Learn More About App"),
-        "AboutAppListTitle": MessageLookupByLibrary.simpleMessage("About App"),
-        "Close": MessageLookupByLibrary.simpleMessage("Close"),
+            MessageLookupByLibrary.simpleMessage("اطلع علي المزيد حول التطبيق"),
+        "AboutAppListTitle":
+            MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
+        "Close": MessageLookupByLibrary.simpleMessage("إغلاق"),
         "ContactDev": MessageLookupByLibrary.simpleMessage(
-            "Contact Me @Mostafa_Sensei106"),
+            "تواصل معي  @Mostafa_Sensei106"),
         "DarkModeListSubTitle":
-            MessageLookupByLibrary.simpleMessage("Change Appearance"),
-        "DarkModeListTitle": MessageLookupByLibrary.simpleMessage("DarkMode"),
-        "DevDM": MessageLookupByLibrary.simpleMessage("Dev DM"),
+            MessageLookupByLibrary.simpleMessage("تغير مظهر التطبيق"),
+        "DarkModeListTitle":
+            MessageLookupByLibrary.simpleMessage("المظهر الداكن"),
+        "DevDM": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
         "DevListSubTitle":
-            MessageLookupByLibrary.simpleMessage("Support,Contact Dev"),
-        "DevListTitle": MessageLookupByLibrary.simpleMessage("Dev"),
-        "DevThx":
-            MessageLookupByLibrary.simpleMessage("Thank you very much. <3"),
-        "License": MessageLookupByLibrary.simpleMessage("License"),
-        "SupportMeBtn":
-            MessageLookupByLibrary.simpleMessage("Support Developer"),
+            MessageLookupByLibrary.simpleMessage("دعم, تواصل مع المطور"),
+        "DevListTitle": MessageLookupByLibrary.simpleMessage("المطور"),
+        "DevThx": MessageLookupByLibrary.simpleMessage("شكراً جزيلاً. <3"),
+        "License": MessageLookupByLibrary.simpleMessage("التراخيص"),
+        "SupportMeBtn": MessageLookupByLibrary.simpleMessage("دعم المطور"),
         "SupportMeMassage": MessageLookupByLibrary.simpleMessage(
             "I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects."),
-        "title": MessageLookupByLibrary.simpleMessage("Neko Mimi")
+        "title": MessageLookupByLibrary.simpleMessage("أذان القط")
       };
 }
