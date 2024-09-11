@@ -12,13 +12,13 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeModel(),
-      child: const MyApp(),
+      child: const NekoMimi(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NekoMimi extends StatelessWidget {
+  const NekoMimi({super.key});
 
   @override
   Widget build(BuildContext context) {
