@@ -1,8 +1,7 @@
 name: nekomimi
 description: "A new Flutter project."
 
-# Prevent accidental publishing of the package to pub.dev
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'github'
 
 version: 1.0.0+1
 
@@ -15,10 +14,13 @@ dependencies:
 
   shared_preferences: ^2.3.2
 
+  provider: ^6.1.2
+
   url_launcher: ^6.3.0
   font_awesome_flutter: ^10.7.0
   flutter_bloc: ^8.1.6
   flutter_screenutil: ^5.9.3
+  flutter_localization: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -43,10 +45,8 @@ flutter_launcher_icons:
 flutter:
   uses-material-design: true
 
-assets:
-  - assets/
-  # - images/a_dot_ham.jpeg
-
+  assets:
+    - assets/images/
   # fonts:
   #   - family: Schyler
   #     fonts:

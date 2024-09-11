@@ -1,7 +1,7 @@
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:nekomimi/featureas/home/widget/appbar/cat_app_bar.dart';
+import 'package:nekomimi/featureas/home/widget/drawer/cat_drawer.dart';
 
 class LoveMePage extends StatefulWidget {
   const LoveMePage({super.key});
@@ -13,16 +13,10 @@ class LoveMePage extends StatefulWidget {
 class _LoveMePageState extends State<LoveMePage> with SingleTickerProviderStateMixin {
   String _answer = '';
   late AnimationController _controller;
-  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    )..repeat(reverse: true);
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
   }
 
   @override
@@ -59,17 +53,12 @@ class _LoveMePageState extends State<LoveMePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Neko Mimi', style: TextStyle(fontFamily: 'Cute Arabic Font')),
-      ),
+      appBar: const CatAppBar(),
+      drawer: const CatDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ScaleTransition(
-              scale: _animation,
-              child: Image.asset('assets/cute_cat.png', width: 150, height: 150),
-            ),
             const SizedBox(height: 20),
             const Text(
               'بتحبني يا قطقوطة؟',
@@ -106,7 +95,6 @@ class _LoveMePageState extends State<LoveMePage> with SingleTickerProviderStateM
                   icon: const Icon(Icons.close, color: Colors.red),
                   label: const Text('لا', style: TextStyle(fontFamily: 'Cute Arabic Font')),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.purple[800], backgroundColor: Colors.purple[100],
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
