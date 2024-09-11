@@ -1,53 +1,53 @@
-name: Flutter
+# name: Flutter
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+# on:
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v3
-        with:
-          flutter-version: 'stable'
+#       - name: Setup Flutter SDK
+#         uses: subosito/flutter-action@v3
+#         with:
+#           flutter-version: 'stable'
 
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.pub-cache
-            .dart_tool
-          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pub-
+#       - name: Cache Flutter dependencies
+#         uses: actions/cache@v3
+#         with:
+#           path: |
+#             ~/.pub-cache
+#             .dart_tool
+#           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+#           restore-keys: |
+#             ${{ runner.os }}-pub-
 
-      - name: Install dependencies
-        run: flutter pub get
+#       - name: Install dependencies
+#         run: flutter pub get
 
-      - name: Build Android APK
-        run: flutter build apk --release
+#       - name: Build Android APK
+#         run: flutter build apk --release
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          body: Automated release for commit ${{ github.sha }}
+#       - name: Create GitHub Release
+#         id: create_release
+#         uses: actions/create-release@v1
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           tag_name: ${{ github.sha }}
+#           release_name: Release ${{ github.sha }}
+#           body: Automated release for commit ${{ github.sha }}
 
-      - name: Upload APK to GitHub Release
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/app/outputs/flutter-apk/app-release.apk
-          asset_name: app-release.apk
-          asset_content_type: application/vnd.android.package-archive
+#       - name: Upload APK to GitHub Release
+#         uses: actions/upload-release-asset@v1
+#         with:
+#           upload_url: ${{ steps.create_release.outputs.upload_url }}
+#           asset_path: build/app/outputs/flutter-apk/app-release.apk
+#           asset_name: app-release.apk
+#           asset_content_type: application/vnd.android.package-archive

@@ -1,16 +1,24 @@
-# nekomimi
+# NekoMimi
 
-A new Flutter project.
+A playful Flutter app that helps you ask your significant other the ultimate question: *"Do you love me?"* 
 
-## Getting Started
+- If they answer "Yes" ❤️, they will receive an adorable message back: *"I love you too!"* 
+- If they answer "No" 💔, the app will cheekily respond with *"You've been hacked!"* and display their IP address.
 
-This project is a starting point for a Flutter application.
+The app also includes support for both Dark Mode and Light Mode, wrapped in a cute, cat-themed interface! 🐾 #nekomimi
 
-A few resources to get you started if this is your first Flutter project:
+## Features
+- Ask "Do you love me?" to your loved one.
+- Cute responses based on their answer.
+- Displays IP address when the answer is "No."
+- Light and Dark Mode support for a better user experience.
+- Adorable, cat-inspired interface.
+- State management using **Flutter BLoC**.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Made out of Boredom
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app was created when I had nothing better to do and felt a little bored. It’s a fun project made for some lighthearted interaction! 😸
+
+## Installation
+
+1. Download Release APK and Enjoy
