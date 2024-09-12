@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nekomimi/config/theme/theme_model.dart';
 import 'package:nekomimi/core/Ta_Divider.dart';
-import 'package:nekomimi/featureas/home/widget/drawer/Locals.dart';
-import 'package:nekomimi/featureas/home/widget/drawer/cat_about_neko.dart';
-import 'package:nekomimi/featureas/home/widget/drawer/cat_contact_dev.dart';
-import 'package:nekomimi/featureas/home/widget/drawer/cat_drawer_header.dart';
-import 'package:nekomimi/featureas/home/widget/drawer/theme_swither.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/drawer/cat_about_neko.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/drawer/cat_contact_dev.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/drawer/cat_darawer_locals.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/drawer/theme_swither.dart';
 import 'package:provider/provider.dart';
+
+import 'cat_drawer_header.dart';
 
 class CatDrawer extends StatelessWidget {
   const CatDrawer({super.key});

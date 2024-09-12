@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nekomimi/featureas/home/widget/appbar/cat_app_bar_icon.dart';
-import 'package:nekomimi/featureas/home/widget/appbar/custom_app_bar_clipper.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/appbar/cat_app_bar_icon.dart';
+import 'package:nekomimi/featureas/home/presentation/widget/appbar/custom_app_bar_clipper.dart';
 import 'package:nekomimi/generated/l10n.dart';
 
 class CatAppBar extends StatelessWidget implements PreferredSizeWidget {

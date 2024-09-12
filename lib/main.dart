@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:nekomimi/config/theme/dark_theme.dart';
 import 'package:nekomimi/config/theme/light_theme.dart';
 import 'package:nekomimi/featureas/home/bloc/Locals/language_bloc.dart';
 import 'package:nekomimi/featureas/home/bloc/Locals/language_state.dart';
-import 'package:nekomimi/featureas/home/bloc/bloc.dart';
-import 'package:nekomimi/featureas/home/page/love_me.dart';
-import 'package:provider/provider.dart';
+import 'package:nekomimi/featureas/home/bloc/chat/love_me_bloc.dart';
+import 'package:nekomimi/featureas/home/domin/usecases/get_network_details.dart';
+import 'package:nekomimi/featureas/home/presentation/page/main_page.dart';
 import 'package:nekomimi/config/theme/theme_model.dart';
 import 'package:nekomimi/generated/l10n.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  final networkService = NetworkService(); // إنشاء خدمة الشبكة
+  final getNetworkDetails = GetNetworkDetails(networkService); // إنشاء GetNetworkDetails
+  final loveMeBloc = LoveMeBloc(getNetworkDetails); // إنشاء LoveMeBloc  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MultiProvider(
       providers: [
@@ -24,16 +28,18 @@ void main() {
           create: (_) => LanguageCubit(),
         ),
         BlocProvider<LoveMeBloc>(
-          create: (_) => LoveMeBloc(),
-        ),      ],
-      child: const NekoMimi(),
+          create: (_) => LoveMeBloc(getNetworkDetails),
+        ),
+      ],
+      child: NekoMimi(getNetworkDetails: getNetworkDetails),
     ),
   );
 }
 
-
 class NekoMimi extends StatelessWidget {
-  const NekoMimi({super.key});
+  final GetNetworkDetails getNetworkDetails;
+
+  const NekoMimi({required this.getNetworkDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +55,11 @@ class NekoMimi extends StatelessWidget {
                   title: '猫耳 • Neko Mimi',
                   themeMode: themeModel.themeMode,
                   theme: lightTheme,
-                  darkTheme: DarkTheme,
-                  home: const LoveMePage(),
+                  darkTheme: DarkTheme, // تأكد من اسم الثيم الخاص بالظلام
+                  home: const MainPage(),
                   debugShowCheckedModeBanner: false,
-                  locale: state.locale,                  localizationsDelegates: const [
+                  locale: state.locale,
+                  localizationsDelegates: const [
                     S.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
