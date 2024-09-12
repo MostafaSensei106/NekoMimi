@@ -38,7 +38,7 @@ Thank you for helping us keep NekoMimi secure!
 
 ---
 
-For any further questions or additional support, feel free to reach out to us at [your-email@example.com].
+For any further questions or additional support, feel free to reach out to us at [wwwmostafagmer100@gmail.com].
 
 Made out of Boredom
 
