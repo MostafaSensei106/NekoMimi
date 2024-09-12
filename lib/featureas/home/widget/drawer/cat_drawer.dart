@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nekomimi/config/theme/theme_model.dart';
+import 'package:nekomimi/featureas/home/widget/drawer/Locals.dart';
 import 'package:nekomimi/featureas/home/widget/drawer/cat_about_neko.dart';
 import 'package:nekomimi/featureas/home/widget/drawer/cat_contact_dev.dart';
 import 'package:nekomimi/featureas/home/widget/drawer/cat_drawer_header.dart';
@@ -62,8 +63,9 @@ class CatDrawer extends StatelessWidget {
                               .colorScheme
                               .surfaceContainer,
                         ),
-                        child: const Column(
+                        child:  const Column(
                           children: [
+                            LanguageSelectionTile(),
                             TaContactDev(),
                             Divider(),
                             AboutNeko(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nekomimi/config/theme/fonts.dart';
 import 'package:nekomimi/featureas/home/bloc/bloc.dart';
 import 'package:nekomimi/featureas/home/widget/appbar/cat_app_bar.dart';
 import 'package:nekomimi/featureas/home/widget/drawer/cat_drawer.dart';
@@ -21,7 +22,7 @@ class LoveMePage extends StatelessWidget {
               SizedBox(height: 20.h),
               Text(
                 'بتحبني يا قطقوطة؟',
-                style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+                style: AppTextStyles.headline1,
               ),
               SizedBox(height: 24.h),
               Row(
@@ -32,7 +33,7 @@ class LoveMePage extends StatelessWidget {
                       context.read<LoveMeBloc>().add(YesEvent());
                     },
                     icon: const Icon(Icons.favorite),
-                    label: Text('نعم', style: TextStyle(fontSize: 16.sp)),
+                    label: Text('نعم', style: AppTextStyles.button),
                   ),
                   SizedBox(width: 16.w),
                   ElevatedButton.icon(
@@ -40,7 +41,7 @@ class LoveMePage extends StatelessWidget {
                       context.read<LoveMeBloc>().add(NoEvent());
                     },
                     icon: const Icon(Icons.close),
-                    label: Text('لا', style: TextStyle(fontSize: 16.sp)),
+                    label: Text('لا', style: AppTextStyles.button),
                   ),
                 ],
               ),
@@ -58,7 +59,7 @@ class LoveMePage extends StatelessWidget {
                         children: [
                           if (state.answer.isNotEmpty)
                             ListTile(
-                              title: Text(state.answer, style: TextStyle(fontSize: 16.sp)),
+                              title: Text(state.answer, style: AppTextStyles.bodyText1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.r),
                               ),
@@ -72,7 +73,7 @@ class LoveMePage extends StatelessWidget {
 
                   if (state.answer == 'نعم') {
                     return ListTile(
-                      title: Text(state.answer, style: TextStyle(fontSize: 16.sp)),
+                      title: Text(state.answer, style: AppTextStyles.bodyText1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r),
                       ),
