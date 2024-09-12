@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nekomimi/featureas/home/bloc/bloc.dart';
+import 'package:nekomimi/featureas/home/widget/appbar/cat_app_bar.dart';
 
 class LoveMePage extends StatelessWidget {
   const LoveMePage({super.key});
@@ -9,9 +10,7 @@ class LoveMePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Love Me Page', style: TextStyle(fontSize: ScreenUtil().setSp(18))),
-      ),
+      appBar: const CatAppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
