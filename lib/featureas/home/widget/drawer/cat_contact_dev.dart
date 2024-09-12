@@ -54,7 +54,7 @@ class TaContactDev extends StatelessWidget {
         borderRadius: BorderRadius.circular(14.0),
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
-      child: const FaIcon(FontAwesomeIcons.dev, size: 27),
+      child:  FaIcon(FontAwesomeIcons.dev, size: 24.sp),
     );
   }
 

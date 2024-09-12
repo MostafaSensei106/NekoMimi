@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppBarClipper extends CustomClipper<Path> {
   @override
@@ -6,13 +7,15 @@ class CustomAppBarClipper extends CustomClipper<Path> {
     final path = Path();
     path.lineTo(0, size.height);
 
-    final FirstCarve = Offset(0, size.height - 20);
-    final SecundCarve = Offset(30, size.height - 20);
+    final double carveHeight = 20.h; // استخدم ScreenUtil لضبط ارتفاع القص
 
-    final secundFirstCarve = Offset(0, size.height - 20);
-    final secundSecundCarve = Offset(size.width - 30, size.height - 20);
+    final FirstCarve = Offset(0, size.height - carveHeight);
+    final SecundCarve = Offset(30.w, size.height - carveHeight);
 
-    final thFirstCarve = Offset(size.width, size.height - 20);
+    final secundFirstCarve = Offset(0, size.height - carveHeight);
+    final secundSecundCarve = Offset(size.width - 30.w, size.height - carveHeight);
+
+    final thFirstCarve = Offset(size.width, size.height - carveHeight);
     final thSecundCarve = Offset(size.width, size.height);
 
     path.quadraticBezierTo(

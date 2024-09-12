@@ -16,19 +16,24 @@ class CatAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Image.asset(
             "assets/images/Cover.jpg",
             fit: BoxFit.cover,
-            width: 1.sw,
+            width: 1.sw, // استخدام ScreenUtil لضبط العرض
+            height: 200.h, // ضبط الارتفاع بناءً على حجم الشاشة
           ),
         ),
-        ClipPath(
-          clipper: CustomAppBarClipper(),
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
           child: AppBar(
-           leading: const CatAppBarIcons(),
-            //backgroundColor: Colors.blue,
-            title:  Text(
+            leading: const CatAppBarIcons(),
+            backgroundColor: Colors.transparent,
+            elevation: 0, // إزالة الظل لجعل الشريط شفاف بالكامل
+            title: Text(
               S.of(context).title,
-            style: const TextStyle(
-              //color: Colors.white
-            ),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.sp, // ضبط حجم الخط بناءً على حجم الشاشة
+              ),
             ),
           ),
         ),
@@ -37,5 +42,5 @@ class CatAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight+15);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + 15.h); // ضبط الارتفاع بناءً على حجم الشاشة
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CatAppBarIcons extends StatelessWidget {
   const CatAppBarIcons({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -9,20 +11,19 @@ class CatAppBarIcons extends StatelessWidget {
         Scaffold.of(context).openDrawer();
       },
       child: Padding(
-        padding: const EdgeInsets.all(9.0),
+        padding: EdgeInsets.all(9.0.w),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Theme
-                .of(context)
+            borderRadius: BorderRadius.circular(10.0.r),
+            color: Theme.of(context)
                 .colorScheme
                 .surfaceContainerHigh
-                .withOpacity(0.2),
+                .withOpacity(0.3),
           ),
-          child: const Icon(
+          child: Icon(
             Icons.more_vert_rounded,
-            size: 28,
-          //  color: Colors.white,
+            size: 28.sp,
+            color: Colors.white,
           ),
         ),
       ),
