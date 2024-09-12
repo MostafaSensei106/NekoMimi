@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gif/flutter_gif.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nekomimi/config/theme/fonts.dart';
 import 'package:nekomimi/featureas/home/bloc/bloc.dart';
 import 'package:nekomimi/featureas/home/widget/appbar/cat_app_bar.dart';
 import 'package:nekomimi/featureas/home/widget/drawer/cat_drawer.dart';
-class LoveMePage extends StatefulWidget {
+class LoveMePage extends StatelessWidget {
   const LoveMePage({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +17,7 @@ class LoveMePage extends StatefulWidget {
         children: [
           Flexible(
             flex: 1,
-            child: Container(
-              color: Colors.grey[200],  // يمكنك تغيير اللون أو إزالته حسب الحاجة
-              child: GifImage(
-                controller: controller,
-                image: const AssetImage("assets/your_gif.gif"),  // ضع مسار الـ GIF هنا
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             flex: 4,
