@@ -3,13 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nekomimi/featureas/home/bloc/Locals/language_bloc.dart';
-import 'package:nekomimi/featureas/home/bloc/Locals/language_event.dart';
 import 'package:nekomimi/featureas/home/bloc/Locals/language_state.dart';
 
 class LanguageSelectionTile extends StatelessWidget {
   const LanguageSelectionTile({super.key});
 
-  // دالة لتحويل كود اللغة إلى اسم اللغة القابلة للعرض
   String _getLanguageName(Locale locale) {
     switch (locale.languageCode) {
       case 'en':
@@ -25,19 +23,18 @@ class LanguageSelectionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguageBloc, LanguageState>(
+    return BlocBuilder<LanguageCubit, LanguageState>(
       builder: (context, state) {
-        Locale currentLocale =
-            state.locale ?? Locale(window.locale.languageCode); // لغة النظام الافتراضية
+        Locale currentLocale = state.locale ?? Locale(window.locale.languageCode);
 
         return ListTile(
           title: const Text('Language'),
-          subtitle: Text(_getLanguageName(currentLocale)), // يعرض اللغة الحالية
+          subtitle: Text(_getLanguageName(currentLocale)),
           trailing: DropdownButton<Locale>(
             value: currentLocale,
             onChanged: (Locale? newValue) {
               if (newValue != null) {
-                BlocProvider.of<LanguageBloc>(context).add(ChangeLanguageEvent(newValue));
+                BlocProvider.of<LanguageCubit>(context).changeLanguage(newValue.languageCode);
               }
             },
             items: const [

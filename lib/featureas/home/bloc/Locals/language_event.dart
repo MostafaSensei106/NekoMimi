@@ -1,9 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-abstract class LanguageEvent {}
+abstract class LanguageEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class ChangeLanguageEvent extends LanguageEvent {
-  final Locale locale;
+  final Locale newLocale;
 
-  ChangeLanguageEvent(this.locale);
+  ChangeLanguageEvent(this.newLocale);
+
+  @override
+  List<Object> get props => [newLocale];
 }

@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +21,8 @@ void main() {
         ChangeNotifierProvider<ThemeModel>(
           create: (_) => ThemeModel(),
         ),
-        BlocProvider<LanguageBloc>(
-          create: (_) => LanguageBloc(),
+        BlocProvider<LanguageCubit>(
+          create: (_) => LanguageCubit(),
         ),
         BlocProvider<LoveMeBloc>(
           create: (_) => LoveMeBloc(),
@@ -41,7 +40,7 @@ class NekoMimi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeModel>(
       builder: (context, themeModel, child) {
-        return BlocBuilder<LanguageBloc, LanguageState>(
+        return BlocBuilder<LanguageCubit, LanguageState>(
           builder: (context, state) {
             return ScreenUtilInit(
               designSize: const Size(360, 690),
@@ -54,8 +53,7 @@ class NekoMimi extends StatelessWidget {
                   darkTheme: DarkTheme,
                   home: const LoveMePage(),
                   debugShowCheckedModeBanner: false,
-                  locale: state.locale ?? Locale(window.locale.languageCode),
-                  localizationsDelegates: const [
+                  locale: state.locale,                  localizationsDelegates: const [
                     S.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
