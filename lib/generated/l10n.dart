@@ -110,10 +110,10 @@ class S {
     );
   }
 
-  /// `I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects.`
+  /// `I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you Like my App, you can buy me a coffee to support future projects.`
   String get SupportMeMassage {
     return Intl.message(
-      'I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects.',
+      'I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you Like my App, you can buy me a coffee to support future projects.',
       name: 'SupportMeMassage',
       desc: '',
       args: [],
@@ -208,6 +208,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
+      Locale.fromSubtags(languageCode: 'jp'),
     ];
   }
 

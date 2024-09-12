@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "SupportMeBtn":
             MessageLookupByLibrary.simpleMessage("Support Developer"),
         "SupportMeMassage": MessageLookupByLibrary.simpleMessage(
-            "I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you’d like, you can buy me a coffee to support future projects."),
+            "I made this application when I was sitting empty and couldn’t find anything to do, so enjoy. If you Like my App, you can buy me a coffee to support future projects."),
         "title": MessageLookupByLibrary.simpleMessage("Neko Mimi")
       };
 }

@@ -13,10 +13,12 @@ class CatAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
        leading: const CatAppBarIcons(),
         //backgroundColor: Colors.blue,
-        title:  Text(S.of(context).title,
+        title:  Text(
+          S.of(context).title,
         style: const TextStyle(
           //color: Colors.white
-        ),),
+        ),
+        ),
       ),
     );
   }
