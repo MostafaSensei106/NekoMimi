@@ -16,75 +16,93 @@ class LoveMePage extends StatelessWidget {
       drawer: const CatDrawer(),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(height: 20.h),
-              Text(
-                'بتحبني يا قطقوطة؟',
-                style: AppTextStyles.headline1,
-              ),
-              SizedBox(height: 24.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      context.read<LoveMeBloc>().add(YesEvent());
-                    },
-                    icon: const Icon(Icons.favorite),
-                    label: Text('نعم', style: AppTextStyles.button),
+          child: Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 8.h),
+                Container(
+                  padding: EdgeInsets.all(8.0.w), // استخدام ScreenUtil لضبط padding
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14.0.r), // استخدام ScreenUtil لضبط دائرة الزوايا
+                    color: Theme.of(context).colorScheme.surfaceContainer,
                   ),
-                  SizedBox(width: 16.w),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      context.read<LoveMeBloc>().add(NoEvent());
-                    },
-                    icon: const Icon(Icons.close),
-                    label: Text('لا', style: AppTextStyles.button),
+                  child: Text(
+                    'بتحبني يا قطقوطة؟',
+                    style: AppTextStyles.headline1,
                   ),
-                ],
-              ),
-              SizedBox(height: 24.h),
-              BlocBuilder<LoveMeBloc, LoveMeState>(
-                builder: (context, state) {
-                  if (state.isLoading) {
-                    return const CircularProgressIndicator();
-                  }
-                  if (state.answer == 'لا') {
-                    return AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: Column(
-                        key: ValueKey<String>(state.answer),
-                        children: [
-                          if (state.answer.isNotEmpty)
-                            ListTile(
-                              title: Text(state.answer, style: AppTextStyles.bodyText1),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.r),
+                ),
+                SizedBox(height: 8.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        context.read<LoveMeBloc>().add(YesEvent());
+                      },
+                      icon:  Icon(Icons.favorite , size: 24.sp,),
+                      label: Text('نعم', style: AppTextStyles.button),
+                    ),
+                    SizedBox(width: 16.w),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        context.read<LoveMeBloc>().add(NoEvent());
+                      },
+                      icon:  Icon(Icons.close , size: 24.sp,),
+                      label: Text('لا', style: AppTextStyles.button),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8.h),
+                BlocBuilder<LoveMeBloc, LoveMeState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return const CircularProgressIndicator();
+                    }
+                    if (state.answer == 'لا') {
+                      return AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child: Column(
+                          key: ValueKey<String>(state.answer),
+                          children: [
+                            if (state.answer.isNotEmpty)
+                              ListTile(
+                                title: Text(state.answer, style: AppTextStyles.bodyText1),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                                contentPadding: const EdgeInsets.all(10),
                               ),
-                              contentPadding: const EdgeInsets.all(10),
-                            ),
-                          ...state.networkDetails.map(_buildNetworkDetailTile),
-                        ],
-                      ),
-                    );
-                  }
+                            ...state.networkDetails.map(_buildNetworkDetailTile),
+                          ],
+                        ),
+                      );
+                    }
 
-                  if (state.answer == 'نعم') {
-                    return ListTile(
-                      title: Text(state.answer, style: AppTextStyles.bodyText1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      contentPadding: const EdgeInsets.all(10),
-                    );
-                  }
+                    if (state.answer == 'نعم') {
+                      return Container(
+                        padding: EdgeInsets.all(8.0.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14.0.r),
+                          color: Theme.of(context).colorScheme.surfaceContainer,
+                        ),
+                        child: ListTile(
+                          leading: Icon(Icons.icecream),
+                          title: Text(state.answer, style: AppTextStyles.bodyText1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          contentPadding: const EdgeInsets.all(10),
+                        ),
+                      );
+                    }
 
-                  return const SizedBox.shrink();
-                },
-              ),
-            ],
+                    return const SizedBox.shrink();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
