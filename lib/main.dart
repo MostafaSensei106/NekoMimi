@@ -45,7 +45,7 @@ class NekoMimi extends StatelessWidget {
             darkTheme: DarkTheme,
             home: const LoveMePage(),
             debugShowCheckedModeBanner: false,
-            locale: const Locale("jp"),
+            locale: const Locale("ar"),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,

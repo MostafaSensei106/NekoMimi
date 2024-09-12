@@ -4,90 +4,120 @@ import 'package:network_info_plus/network_info_plus.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-// Define events
-abstract class LoveMeEvent {}
+// Events
+sealed class LoveMeEvent {}
 
-class YesEvent extends LoveMeEvent {}
+final class YesEvent extends LoveMeEvent {}
 
-class NoEvent extends LoveMeEvent {}
+final class NoEvent extends LoveMeEvent {}
 
-// Define states
-abstract class LoveMeState {
+// States
+sealed class LoveMeState {
   final String answer;
-  final List<Map<String, String>> networkDetails;
+  final List<NetworkDetail> networkDetails;
   final bool isLoading;
 
-  LoveMeState(this.answer, this.networkDetails, {this.isLoading = false});
+  const LoveMeState({
+    required this.answer,
+    required this.networkDetails,
+    this.isLoading = false,
+  });
 }
 
-class InitialState extends LoveMeState {
-  InitialState() : super('', [], isLoading: false);
+final class InitialState extends LoveMeState {
+  InitialState() : super(answer: '', networkDetails: const [], isLoading: false);
 }
 
-class YesState extends LoveMeState {
-  YesState() : super('نعم', [], isLoading: false);
+final class YesState extends LoveMeState {
+  YesState() : super(answer: 'نعم', networkDetails: const [], isLoading: false);
 }
 
-class NoState extends LoveMeState {
-  NoState(List<Map<String, String>> networkDetails) : super('لا', networkDetails, isLoading: false);
+final class NoState extends LoveMeState {
+  NoState({required List<NetworkDetail> networkDetails})
+      : super(answer: 'لا', networkDetails: networkDetails, isLoading: false);
 }
 
-class ErrorState extends LoveMeState {
-  ErrorState() : super('حدث خطأ', [], isLoading: false);
+final class ErrorState extends LoveMeState {
+  ErrorState() : super(answer: 'حدث خطأ', networkDetails: const [], isLoading: false);
 }
 
-class LoadingState extends LoveMeState {
-  LoadingState() : super('', [], isLoading: true);
+final class LoadingState extends LoveMeState {
+  LoadingState() : super(answer: '', networkDetails: const [], isLoading: true);
 }
 
-// Bloc class
-class LoveMeBloc extends Bloc<LoveMeEvent, LoveMeState> {
-  LoveMeBloc() : super(InitialState()) {
-    on<YesEvent>((event, emit) {
-      emit(YesState());
-    });
+// Data class for network details
+class NetworkDetail {
+  final String type;
+  final String value;
 
-    on<NoEvent>((event, emit) async {
-      emit(LoadingState()); // Show loading indicator while processing
-      try {
-        final networkDetails = await _getNetworkDetails();
-        emit(NoState(networkDetails));
-      } catch (_) {
-        emit(ErrorState());
-      }
-    });
-  }
+  const NetworkDetail({required this.type, required this.value});
+}
 
-  Future<List<Map<String, String>>> _getNetworkDetails() async {
-    final List<Map<String, String>> details = [];
+// Repository for network operations
+class NetworkRepository {
+  final NetworkInfo _networkInfo;
+  final http.Client _httpClient;
+
+  NetworkRepository({NetworkInfo? networkInfo, http.Client? httpClient})
+      : _networkInfo = networkInfo ?? NetworkInfo(),
+        _httpClient = httpClient ?? http.Client();
+
+  Future<List<NetworkDetail>> getNetworkDetails() async {
     try {
-      final info = NetworkInfo();
-      String? wifiName = await info.getWifiName();
-      String? wifiIP = await info.getWifiIP();
-      String? wifiGateway = await info.getWifiGatewayIP();
-      String publicIP = await _getPublicIP();
+      final wifiName = await _networkInfo.getWifiName();
+      final wifiIP = await _networkInfo.getWifiIP();
+      final wifiGateway = await _networkInfo.getWifiGatewayIP();
+      final publicIP = await _getPublicIP();
 
-      details.add({'نوع': 'اسم الشبكة', 'قيمة': wifiName ?? 'غير متوفر'});
-      details.add({'نوع': 'IP المحلي', 'قيمة': wifiIP ?? 'غير متوفر'});
-      details.add({'نوع': 'بوابة الاتصال', 'قيمة': wifiGateway ?? 'غير متوفر'});
-      details.add({'نوع': 'IP العام', 'قيمة': publicIP});
-    } catch (_) {
-      details.add({'نوع': 'حالة الشبكة', 'قيمة': 'غير متصل'});
+      return [
+        NetworkDetail(type: 'اسم الشبكة', value: wifiName ?? 'غير متوفر'),
+        NetworkDetail(type: 'IP المحلي', value: wifiIP ?? 'غير متوفر'),
+        NetworkDetail(type: 'بوابة الاتصال', value: wifiGateway ?? 'غير متوفر'),
+        NetworkDetail(type: 'IP العام', value: publicIP),
+      ];
+    } catch (e) {
+      return [NetworkDetail(type: 'حالة الشبكة', value: 'غير متصل')];
     }
-    return details;
   }
 
   Future<String> _getPublicIP() async {
     try {
-      final response = await http.get(Uri.parse('https://api.ipify.org?format=json')).timeout(Duration(seconds: 5));
+      final response = await _httpClient
+          .get(Uri.parse('https://api.ipify.org?format=json'))
+          .timeout(const Duration(seconds: 5));
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return data['ip.dart'];
-      } else {
-        return 'غير متصل';
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        return data['ip'] as String;
       }
+    } catch (e) {
+      // Log the error
+    }
+    return 'غير متوفر';
+  }
+}
+
+// Bloc class
+class LoveMeBloc extends Bloc<LoveMeEvent, LoveMeState> {
+  final NetworkRepository _networkRepository;
+
+  LoveMeBloc({NetworkRepository? networkRepository})
+      : _networkRepository = networkRepository ?? NetworkRepository(),
+        super(InitialState()) {
+    on<YesEvent>(_onYesEvent);
+    on<NoEvent>(_onNoEvent);
+  }
+
+  Future<void> _onYesEvent(YesEvent event, Emitter<LoveMeState> emit) async {
+    emit(YesState());
+  }
+
+  Future<void> _onNoEvent(NoEvent event, Emitter<LoveMeState> emit) async {
+    emit(LoadingState());
+    try {
+      final networkDetails = await _networkRepository.getNetworkDetails();
+      emit(NoState(networkDetails: networkDetails));
     } catch (_) {
-      return 'غير متصل';
+      emit(ErrorState());
     }
   }
 }
