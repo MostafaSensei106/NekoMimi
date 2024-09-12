@@ -1,4 +1,4 @@
-package com.mhsensei.nekomimi.nekomimi
+package com.mhsensei.nekomimi
 
 import io.flutter.embedding.android.FlutterActivity
 
