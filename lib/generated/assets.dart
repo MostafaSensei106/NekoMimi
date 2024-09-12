@@ -4,9 +4,13 @@ class Assets {
 
   static const String arTajawalRegular = 'assets/fonts/ar/Tajawal-Regular.ttf';
   static const String enOverlockRegular = 'assets/fonts/en/Overlock-Regular.ttf';
+  static const String gifsSTK20240911WA0002 = 'assets/gifs/STK-20240911-WA0002.gif';
+  static const String gifsSTK20240911WA0003 = 'assets/gifs/STK-20240911-WA0003.webp';
+  static const String gifsSTK20240911WA0004 = 'assets/gifs/STK-20240911-WA0004.webp';
   static const String iconIcLauncherForeground = 'assets/icon/ic_launcher_foreground.png';
   static const String iconPlayStore512 = 'assets/icon/play_store_512.png';
   static const String images5349 = 'assets/images/5349.jpg';
+  static const String imagesCover = 'assets/images/Cover.jpg';
   static const String imagesMHlogo = 'assets/images/MHlogo.png';
   static const String jpYujiSyukuRegular = 'assets/fonts/jp/YujiSyuku-Regular.ttf';
 

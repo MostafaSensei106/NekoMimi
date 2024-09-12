@@ -11,7 +11,7 @@ class CatAppBarIcons extends StatelessWidget {
         Scaffold.of(context).openDrawer();
       },
       child: Padding(
-        padding: EdgeInsets.all(9.0.w),
+        padding: EdgeInsets.all(8.0.w),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0.r),
@@ -22,7 +22,7 @@ class CatAppBarIcons extends StatelessWidget {
           ),
           child: Icon(
             Icons.more_vert_rounded,
-            size: 28.sp,
+            size: 27.sp,
             color: Colors.white,
           ),
         ),

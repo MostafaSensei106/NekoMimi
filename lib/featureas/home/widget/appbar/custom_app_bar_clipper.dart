@@ -7,7 +7,7 @@ class CustomAppBarClipper extends CustomClipper<Path> {
     final path = Path();
     path.lineTo(0, size.height);
 
-    final double carveHeight = 20.h; // استخدم ScreenUtil لضبط ارتفاع القص
+    final double carveHeight = 20.h;
 
     final FirstCarve = Offset(0, size.height - carveHeight);
     final SecundCarve = Offset(30.w, size.height - carveHeight);

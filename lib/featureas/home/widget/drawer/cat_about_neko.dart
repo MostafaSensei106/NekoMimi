@@ -46,7 +46,7 @@ class AboutNeko extends StatelessWidget {
               S.of(context).AboutApp,
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 16.sp, // استخدام ScreenUtil لضبط حجم الخط
+                fontSize: 16.sp,
               ),
             ),
           ),
