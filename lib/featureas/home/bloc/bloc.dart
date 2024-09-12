@@ -82,7 +82,7 @@ class LoveMeBloc extends Bloc<LoveMeEvent, LoveMeState> {
       final response = await http.get(Uri.parse('https://api.ipify.org?format=json')).timeout(Duration(seconds: 5));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data['ip'];
+        return data['ip.dart'];
       } else {
         return 'غير متصل';
       }

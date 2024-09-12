@@ -49,7 +49,6 @@ class LoveMePage extends StatelessWidget {
                   if (state.isLoading) {
                     return const CircularProgressIndicator();
                   }
-
                   if (state.answer == 'لا') {
                     return AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
@@ -90,7 +89,7 @@ class LoveMePage extends StatelessWidget {
                     );
                   }
 
-                  return Container(); // Return an empty container if no network details should be shown
+                  return Container();
                 },
               ),
             ],
